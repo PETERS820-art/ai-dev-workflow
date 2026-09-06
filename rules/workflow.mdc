@@ -1,0 +1,99 @@
+---
+description: Shared workflow rules for Planner, Architect, Builder, and Reviewer.
+alwaysApply: true
+---
+
+# Workflow
+
+## Sources of Truth
+
+- Repository / Git = current implementation
+- Linear = work scope, state, dependencies and acceptance criteria
+- ADR / architecture docs = stable architecture constraints
+- User = intent, priority, approval and human decisions
+
+Prefer querying current sources over relying on conversation memory.
+
+---
+
+## Project Scope
+
+Never guess between multiple Linear projects.
+
+Once a project is established in a conversation, keep using it until:
+- the user switches;
+- repository scope changes;
+- project identity becomes ambiguous.
+
+Do not repeatedly ask for scope that is already clear.
+
+---
+
+## Context Efficiency
+
+Use the minimum context required.
+
+Prefer:
+
+search → locate → read relevant content
+
+Avoid broad repository, Linear or document loading by default.
+
+Delegate large repository exploration to a focused subagent when appropriate, and return concise findings to the main Agent context.
+
+Do not repeat exploration when current evidence is already sufficient.
+
+---
+
+## Engineering
+
+Before creating new architecture, search for existing equivalents.
+
+Prefer:
+
+reuse → extend → create
+
+Do not duplicate existing responsibility without justification.
+
+---
+
+## Roles
+
+Planner:
+user need → delivery strategy
+
+Architect:
+current repo → implementation architecture → Linear
+
+Builder:
+approved issue → implementation → self-test
+
+Reviewer:
+issue + diff + evidence → PASS / FAIL / BLOCKED
+
+Do not silently assume another role's responsibilities.
+
+---
+
+## Human Gates
+
+Pause for:
+- project selection
+- development approval/start
+- credentials or OAuth
+- external permissions
+- destructive or irreversible operations
+- unresolved product decisions
+- major architecture conflicts
+
+Do not bypass human-controlled blockers.
+
+---
+
+## Completion
+
+Development is complete only when:
+- Linear acceptance criteria are satisfied;
+- required verification succeeds;
+- Reviewer returns PASS;
+- no blocking condition remains.
