@@ -1,0 +1,17 @@
+{
+  "name": "ai-dev-workflow-marketplace",
+  "owner": {
+    "name": "PETERS820-art"
+  },
+  "metadata": {
+    "description": "Human-controlled Planner to Architect to Builder development workflow",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "ai-dev-workflow",
+      "source": ".",
+      "description": "A human-controlled Planner → Architect → Builder development workflow with independent review and repository exploration."
+    }
+  ]
+}

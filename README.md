@@ -63,9 +63,52 @@ Architect stops after Linear/architecture planning and waits for approval.
 
 Builder must invoke a fresh Reviewer after implementation and self-test.
 
+## Install
+
+Repository: https://github.com/PETERS820-art/ai-dev-workflow
+
+This repository is **public**. Cursor installs plugins by cloning with local git; a private repo will silently fail on machines that are not logged into GitHub.
+
+### Option A — Install from GitHub in Cursor
+
+1. Open **Customize → Plugins** (or Marketplace)
+2. Choose install / import from GitHub repository
+3. Paste: `https://github.com/PETERS820-art/ai-dev-workflow`
+4. Install **AI Dev Workflow** / `ai-dev-workflow`
+5. Reload the window if components do not appear
+
+If Cursor jumps back to the public Marketplace without installing, use Option B.
+
+### Option B — Local install (most reliable)
+
+Copy the repository contents to:
+
+```text
+~/.cursor/plugins/local/ai-dev-workflow/
+```
+
+Required layout:
+
+```text
+~/.cursor/plugins/local/ai-dev-workflow/
+├── .cursor-plugin/plugin.json
+├── skills/
+├── agents/
+├── rules/
+└── commands/
+```
+
+Then restart Cursor or run **Developer: Reload Window**.
+
+### Option C — Team Marketplace (Teams / Enterprise)
+
+1. Dashboard → Plugins → Team Marketplaces → Import from Repo
+2. Import `https://github.com/PETERS820-art/ai-dev-workflow`
+3. Install the plugin from your team marketplace in Customize
+
 ## Setup
 
-Run the `setup-workflow` command after installing the plugin.
+After install, run the `setup-workflow` command.
 
 It only verifies components, checks Linear MCP availability when needed, and explains the modes.
 
