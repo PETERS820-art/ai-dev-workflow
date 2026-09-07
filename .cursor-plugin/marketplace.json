@@ -4,14 +4,14 @@
     "name": "PETERS820-art"
   },
   "metadata": {
-    "description": "Human-controlled Planner to Architect to Builder development workflow",
-    "version": "1.0.0"
+    "description": "Human-controlled product planning and engineering workflow",
+    "version": "1.1.0"
   },
   "plugins": [
     {
       "name": "ai-dev-workflow",
       "source": ".",
-      "description": "A human-controlled Planner → Architect → Builder development workflow with independent review and repository exploration."
+      "description": "A human-controlled workflow with optional Planner discovery, Architect issue design, Builder implementation, and independent review."
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "name": "ai-dev-workflow",
-  "version": "1.0.0",
-  "description": "A human-controlled Planner to Architect to Builder development workflow with independent review and repository exploration.",
+  "version": "1.1.0",
+  "description": "A human-controlled workflow with optional Planner discovery, Architect issue design, Builder implementation, and independent review.",
   "keywords": ["workflow", "planner", "architect", "builder", "reviewer"]
 }

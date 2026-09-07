@@ -1,10 +1,18 @@
 # AI Dev Workflow
 
-A human-controlled Cursor plugin for Planner → Architect → Builder development, with independent review and repository exploration.
+A human-controlled Cursor plugin for optional product planning followed by Architect → Builder development, with independent review and repository exploration.
 
 ## Workflow
 
-Planner
+Unclear need / prioritization / human actions
+→ Planner
+→ Copy approved Feature Brief into a separate Architect conversation
+→ Architect
+→ Human Gate
+→ Builder
+→ Reviewer
+
+Clear feature or bug
 → Architect
 → Human Gate
 → Builder
@@ -15,10 +23,10 @@ Repo Explorer is used by Architect for broad repository investigation when neede
 ## Main Agents
 
 ### Planner
-Translates real user needs into product scope, delivery strategy, priorities, and Feature Briefs.
+Acts as an optional product-planning partner. It discusses incomplete ideas, triages and prioritizes work, advises on human-operated actions such as domains or hosting, reads existing Linear issues only when access is guaranteed read-only, and produces a copy-ready Feature Brief. It never reads code or writes to Linear.
 
 ### Architect
-Grounds an approved Feature Brief in the current repository and Linear state, then produces executable issues and acceptance criteria.
+Accepts either a clear user requirement or a copied, approved Feature Brief. It grounds the requirement in the current repository and Linear state, then produces executable issues and acceptance criteria.
 
 ### Builder
 Implements one approved Linear issue, self-tests, then requires an independent Reviewer PASS before completion.
@@ -36,10 +44,10 @@ Read-only repository investigation for Architect. Returns concise evidence only.
 ## Recommended Usage
 
 ### Planner
-Long-lived project/product planning session.
+Optional long-lived product and delivery planning session. Keep it separate from Architect.
 
 ### Architect
-Feature-scoped architecture session.
+Feature-scoped architecture session. Paste an approved Planner handoff when Planner was used.
 
 ### Builder
 Fresh issue-scoped implementation session.
@@ -58,6 +66,10 @@ This workflow intentionally requires user control between:
 - Architect → Builder
 
 No automatic end-to-end execution should occur.
+
+Planner is not required when the user requirement is already clear.
+
+Planner and Architect use separate conversations. Planner outputs a complete handoff block; after approving it, the user manually copies it into a new Architect conversation. The workflow does not default to shared chat context or switching Skills inside one conversation.
 
 Architect stops after Linear/architecture planning and waits for approval.
 
@@ -113,6 +125,8 @@ After install, run the `setup-workflow` command.
 It only verifies components, checks Linear MCP availability when needed, and explains the modes.
 
 It does not create project identity files or start development.
+
+Use `prepare-architect-handoff` at the end of an approved Planner discussion to produce the final copy-ready block.
 
 ## Portability
 

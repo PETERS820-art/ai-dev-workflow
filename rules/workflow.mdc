@@ -1,99 +1,35 @@
 ---
-description: Shared workflow rules for Planner, Architect, Builder, and Reviewer.
+description: Shared role boundaries and gates for the AI Dev Workflow.
 alwaysApply: true
 ---
 
 # Workflow
 
-## Sources of Truth
+## Route
 
-- Repository / Git = current implementation
-- Linear = work scope, state, dependencies and acceptance criteria
-- ADR / architecture docs = stable architecture constraints
-- User = intent, priority, approval and human decisions
+- Unclear need, prioritization or human/external planning -> optional Planner.
+- Clear feature or bug -> Architect directly.
+- Approved Linear issue -> Builder.
+- Implemented issue -> fresh Reviewer.
 
-Prefer querying current sources over relying on conversation memory.
+Planner produces a self-contained approved brief for manual copy into a new Architect conversation. Never switch Planner and Architect Skills in one chat or assume shared-chat context.
 
----
+## Authority
 
-## Project Scope
+- User: intent, priority, approvals and human decisions.
+- Planner: discussion, prioritization, read-only existing issues and external-action guidance; never repository access or Linear writes.
+- Architect: repository-grounded architecture and executable Linear issues.
+- Builder: one approved issue, implementation and self-test.
+- Reviewer: fresh independent PASS / FAIL / BLOCKED decision from issue, diff and evidence.
 
-Never guess between multiple Linear projects.
+Repository/Git defines implementation truth. Linear defines executable scope and Acceptance Criteria. Architecture docs/ADRs define stable constraints.
 
-Once a project is established in a conversation, keep using it until:
-- the user switches;
-- repository scope changes;
-- project identity becomes ambiguous.
+## Shared Rules
 
-Do not repeatedly ask for scope that is already clear.
+- Never guess between projects or repeat scope questions already answered.
+- Search before creating architecture; prefer reuse, then extension, then creation.
+- Use only relevant context. Architect may use a focused Repo Explorer; Planner may not.
+- Keep role responsibilities separate.
+- Pause for project ambiguity, product decisions, brief approval, development approval, credentials, permissions, destructive actions or major architecture conflicts.
 
----
-
-## Context Efficiency
-
-Use the minimum context required.
-
-Prefer:
-
-search → locate → read relevant content
-
-Avoid broad repository, Linear or document loading by default.
-
-Delegate large repository exploration to a focused subagent when appropriate, and return concise findings to the main Agent context.
-
-Do not repeat exploration when current evidence is already sufficient.
-
----
-
-## Engineering
-
-Before creating new architecture, search for existing equivalents.
-
-Prefer:
-
-reuse → extend → create
-
-Do not duplicate existing responsibility without justification.
-
----
-
-## Roles
-
-Planner:
-user need → delivery strategy
-
-Architect:
-current repo → implementation architecture → Linear
-
-Builder:
-approved issue → implementation → self-test
-
-Reviewer:
-issue + diff + evidence → PASS / FAIL / BLOCKED
-
-Do not silently assume another role's responsibilities.
-
----
-
-## Human Gates
-
-Pause for:
-- project selection
-- development approval/start
-- credentials or OAuth
-- external permissions
-- destructive or irreversible operations
-- unresolved product decisions
-- major architecture conflicts
-
-Do not bypass human-controlled blockers.
-
----
-
-## Completion
-
-Development is complete only when:
-- Linear acceptance criteria are satisfied;
-- required verification succeeds;
-- Reviewer returns PASS;
-- no blocking condition remains.
+Development is complete only when all Linear Acceptance Criteria pass, required verification succeeds, a fresh Reviewer returns PASS, and no blocker remains.
