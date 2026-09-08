@@ -82,13 +82,17 @@ Every Builder-facing issue must contain:
 
 - `Goal`
 - `Context`
+- `Planning Baseline`: repository, planned ref and full `planned_against` commit SHA
 - `Existing / Reuse`
 - `Change`
+- `Change Surface`: expected touchpoints, `Do Not Touch`, and allowed supporting changes
 - `Constraints`
 - `Implementation Notes`
 - testable `Acceptance Criteria`
 - real `Dependencies`
 - required `Follow-up`
+
+Record whether uncommitted changes informed the plan; do not publish an executable issue from unrecoverable working-tree state. Touchpoints are expected, not an exhaustive file whitelist; `Do Not Touch` is binding until the issue is explicitly updated.
 
 Acceptance Criteria must let a fresh Reviewer decide PASS or FAIL from repository evidence. Record temporary implementations and replacement work explicitly.
 

@@ -64,6 +64,20 @@ Do not invent missing product requirements.
 ---
 
 
+# Freshness Check
+
+Before any edit, use read-only Git checks to verify repository identity and the full `planned_against` SHA, record pre-build HEAD/ref/working-tree status, and compare committed plus uncommitted drift with the issue's touchpoints, dependencies and architecture assumptions. Preserve this evidence for Reviewer.
+
+- `FRESH`: no relevant drift; proceed.
+- `SAFE_DRIFT`: drift exists but does not affect the issue; record why and proceed.
+- `STALE`: relevant drift changes or invalidates the plan; stop and return to Architect for an issue refresh.
+- `BLOCKED`: identity, baseline ancestry or state cannot be verified safely, including a missing baseline or Change Surface; stop and request resolution.
+
+Only `FRESH` or `SAFE_DRIFT` may enter implementation. Never mutate Git or the worktree to make the check pass.
+
+Expected touchpoints are not a strict file whitelist. Explain directly necessary supporting changes; stop before touching `Do Not Touch` or making a material cross-boundary change unless the issue is explicitly updated.
+
+---
 
 # Source of truth
 
@@ -99,10 +113,10 @@ If the repository differs from the assumptions in the issue:
 
 do not blindly implement the old plan.
 
-For minor implementation differences:
+For minor implementation differences already classified `SAFE_DRIFT`:
 adapt safely while preserving the issue goal.
 
-For meaningful architecture conflicts:
+For `STALE` state or meaningful architecture conflicts:
 STOP and report the conflict to the user / Architect.
 
 Do not silently redesign core architecture.

@@ -30,6 +30,7 @@ Repository/Git defines implementation truth. Linear defines executable scope and
 - Search before creating architecture; prefer reuse, then extension, then creation.
 - Use only relevant context. Architect may use a focused Repo Explorer; Planner may not.
 - Keep role responsibilities separate.
+- Builder proceeds only after a recorded `FRESH` or `SAFE_DRIFT` pre-build check; Reviewer verifies freshness and Change Surface.
 - Pause for project ambiguity, product decisions, brief approval, development approval, credentials, permissions, destructive actions or major architecture conflicts.
 
 Development is complete only when all Linear Acceptance Criteria pass, required verification succeeds, a fresh Reviewer returns PASS, and no blocker remains.

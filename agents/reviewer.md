@@ -136,6 +136,14 @@ Passing tests do not automatically mean PASS.
 
 ---
 
+# Freshness and Change Surface
+
+Verify that the issue records `planned_against` and Change Surface, and that Builder preserved pre-build HEAD, working-tree status, drift summary and a justified `FRESH` or `SAFE_DRIFT` classification.
+
+Compare the final diff with expected touchpoints, allowed supporting changes and `Do Not Touch`. Missing freshness evidence, implementation from a `STALE` baseline, unexplained cross-boundary changes or a `Do Not Touch` violation is FAIL. Use BLOCKED only when repository identity or required evidence cannot be accessed.
+
+---
+
 # Result
 
 You may return only one overall status:

@@ -75,6 +75,10 @@ Architect stops after Linear/architecture planning and waits for approval.
 
 Builder must invoke a fresh Reviewer after implementation and self-test.
 
+## Freshness and Change Surface
+
+Architect records a full `planned_against` commit SHA plus expected touchpoints, allowed supporting changes and `Do Not Touch` in every Builder-facing issue. Before editing, Builder classifies repository drift as `FRESH`, `SAFE_DRIFT`, `STALE` or `BLOCKED`; only the first two may proceed. Reviewer independently verifies this evidence and the final diff boundary.
+
 ## Install
 
 Repository: https://github.com/PETERS820-art/ai-dev-workflow
