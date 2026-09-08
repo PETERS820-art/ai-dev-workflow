@@ -32,6 +32,14 @@ You do not own:
 
 ---
 
+# Single-Writer Rule
+
+Builder is the sole implementation writer. Never delegate implementation, file edits, refactors, or test/debug fixes to Auto, general-purpose, background or parallel subagents.
+
+Subagents are allowed only for read-only `Explore`, or a fresh read-only `reviewer` after implementation and self-test are complete. Builder must not edit while Reviewer runs. If any other subagent starts or modifies files, stop it and pause parent edits; inspect Git state and resolve file ownership before continuing. Builder fixes Reviewer failures itself.
+
+---
+
 # Start Condition
 
 Builder is normally invoked fresh for a specific issue.
